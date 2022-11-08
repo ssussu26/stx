@@ -1,0 +1,800 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/* 
+모두 선택해서 
+여백(바깥)을 0으로 만든다.
+안쪽공간을 0으로 만든다.
+테두리 및 패딩은 안쪽으로 그린다.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 기본값 세팅 */
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
+/* 화면이 알아서 비율따라 레이아웃을 잡는다
+    css내에서 html로 font 사이즈 지정하면 기기에 따라 폰트비율이 바뀌고
+    그에따라 레이아웃의 비율로 바뀐다. */
+html {
+    font-size: 16px;
+}
+
+/* 문서의 모든 기본 형식 지정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #444444;
+    font-size: 16px;
+    line-height: 1.45;
+    /*line-heignt : 행간조절 Font size 크기에 따라 알아서 비율조절  */
+    letter-spacing: 0.3px;
+    /* letter-spacing : 자간설정 */
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 0px;
+}
+
+/* 공통적으로 사용하는 요소
+.클래스를 2번 이상 사용하는 공통요소 */
+
+.inner {
+    position: relative;
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 가운데로 가도록 해주는 셋팅 */
+    height: 100%;
+    /* 모든 inner에 높이값을 정해주는 셋팅 */
+
+}
+
+
+/* 개별 section 작업 */
+/* 상단 */
+.header {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 80px;
+
+    z-index: 9999;
+    overflow: hidden;
+    transition: height 0.4s ease-out 0s;
+
+}
+
+.header:hover {
+    height: calc(80px + 330px);
+}
+
+.header-top-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: block;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.header-bg {
+    position: absolute;
+    /* 높이값이 반영되지 않음 */
+    left: 0;
+    top: 80px;
+    display: block;
+    width: 100%;
+    height: 330px;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.header .inner {}
+
+.header-logo {
+    position: absolute;
+    display: inline-block;
+    top: 20px;
+    left: -306px;
+
+}
+
+.gnb {
+    position: relative;
+    display: block;
+    width: calc(180px * 6);
+    /* 180px*6가 너의 너비이다 라고 정의
+    대신 *좌우로 여백을 무조건 줘야함 */
+    margin: 0 auto;
+}
+
+.gnb a {
+    transition: color 0.5s;
+
+}
+
+.depth1 {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.depth1>li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 180px;
+    padding-left: 50px;
+
+}
+
+.depth1>li>a {
+    position: relative;
+    display: block;
+    height: 80px;
+    line-height: 79px;
+    font-size: 19px;
+    font-weight: 500;
+    color: #000;
+}
+
+.depth1>li>a:hover {
+    color: #ed1c24;
+}
+
+/* 주 메뉴 포커스 유지 */
+
+.depth1>li:hover>a {
+    color: #ed1c24;
+}
+
+.depth2 {
+    position: relative;
+    display: block;
+    margin-top: 40px;
+}
+
+.depth2>li {
+    position: relative;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.depth2>li>a {
+    position: relative;
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    /* 위 .body 에 있는 line-height값을 덮어씌운다 */
+}
+
+.depth2>li>a:hover {
+    color: #ed1c24;
+}
+
+
+.header-etc {
+    position: absolute;
+    top: 35px;
+    right: -205px;
+}
+
+.lang-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    /* 밑에 float:left; 때매 높이값이 없어지므로 overflow:hidden; 주기 */
+}
+
+.lang-list>li {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.lang-list>li>a {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase;
+    /* 대문자 */
+}
+
+.lang-list>li:first-child>a {
+    color: #888;
+    padding-right: 12px;
+    /* padding 값 포함해서 a태그가 적용 */
+    line-height: 1;
+}
+
+.lang-list>li:first-child>a::after {
+    content: '';
+    position: absolute;
+    top: 3PX;
+    right: 0;
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: #888;
+
+}
+
+
+.lang-list>li:last-child>a {
+    padding-left: 12px;
+    line-height: 1;
+}
+
+/* 비주얼 */
+.visual {
+    position: relative;
+    display: block;
+
+    margin-top: 80PX;
+    width: 100%;
+    height: 910px;
+
+    background-color: #fff;
+    background: url('../images/img_visual01.png') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    /* 고정한다는 의미 */
+
+
+}
+
+.visual .inner {
+    padding-top: 245px;
+    overflow: hidden;
+}
+
+
+.visual .inner p {
+    position: relative;
+    display: block;
+    font-size: 70px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 40px;
+}
+
+.visual .inner p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -45px;
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ed1c24;
+}
+
+.visual .inner span {
+    position: relative;
+    display: block;
+    color: #fff;
+    font-size: 21px;
+
+}
+
+.gopart {
+    position: absolute;
+    display: block;
+    left: calc(50% - 16px);
+    bottom: 40px;
+    background: url('../images/bg_common.png') no-repeat;
+    width: 33px;
+    height: 33px;
+    background-position: -122px 0px;
+
+}
+
+/* 높이값을 임의로 정하지 않는 이상 기본 값은 0
+    안에 내용에 맞게 보이는 것일뿐 기본값은 0이다. 
+    그러므로 지정해 주어야 함 
+    대신 .inner로 전체 다 지정해주면 됨*/
+
+/* 업무파트 */
+.part {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 885px;
+}
+
+.part .inner {
+    padding-top: 110px;
+}
+
+.part-top {
+    position: relative;
+    display: block;
+}
+
+.part-top h2 {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 44px;
+    color: #111;
+    font-weight: 600;
+    padding-bottom: 25px;
+    line-height: 1;
+    margin-bottom: 30px;
+
+}
+
+.part-top h2::after {
+    content: '';
+    /* ::after는 항상 content와 붙어있다*/
+    position: absolute;
+    left: calc(50% - 18px);
+    bottom: 0px;
+    display: block;
+    width: 37px;
+    height: 4px;
+    background: #ed1c24;
+}
+
+.part-top p {
+    position: relative;
+    display: block;
+    text-align: center;
+    /* font-size: 16px; */
+    margin-bottom: 60px;
+}
+
+.part-bottom {
+    position: relative;
+    display: block;
+}
+
+.part-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.part-list li {
+    position: relative;
+    display: block;
+    float: left;
+    width: calc(100% / 5);
+    height: 420px;
+    text-align: center;
+
+    background: url('../images/img_business.png') no-repeat;
+    background-position: 0px 0px;
+    /* 밑에 일일히 적지 않아도 아래 내용에 자동 적용 , 변경해야 할때 따로 적기 */
+}
+
+.part-list li:nth-child(1) {
+    background-position: calc(-240px * 0) 0px;
+}
+
+.part-list li:nth-child(2) {
+    background-position: calc(-240px * 1) 0px;
+}
+
+.part-list li:nth-child(3) {
+    background-position: calc(-240px * 2) 0px;
+}
+
+.part-list li:nth-child(4) {
+    background-position: calc(-240px * 3) 0px;
+}
+
+.part-list li:nth-child(5) {
+    background-position: calc(-240px * 4) 0px;
+}
+
+
+.part-list li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 98px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    transition: background 0.3s ease-out;
+}
+
+.part-list li a:hover {
+    /* transition: background 0.3s ease-out; */
+    /* 호버될때만 애니메이션이 걸리고 호버에서 아웃되면 애니메이션이 확 사라짐 */
+    background: #f48025;
+}
+
+.part-list li a::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 61px);
+    top: 214px;
+    display: block;
+    width: 123px;
+    height: 112px;
+    background: url('../images/bg_common.png') no-repeat;
+    opacity: 0;
+    /* background-position: -160px 0px; */
+}
+
+.part-list li:hover a::before {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+
+.part-list li:nth-child(1) a::before {
+    background-position: -168px 0px;
+}
+
+.part-list li:nth-child(2) a::before {
+    background-position: -301px 0px;
+}
+
+.part-list li:nth-child(3) a::before {
+    left: calc(50% - 65px);
+    width: 130px;
+    background-position: 0px -118px;
+}
+
+.part-list li:nth-child(4) a::before {
+    left: calc(50% - 65px);
+    width: 130px;
+    background-position: -140px -122px;
+}
+
+.part-list li:nth-child(5) a::before {
+    background-position: -268px -119px;
+}
+
+/* 공지/뉴스 */
+.comm {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 480px;
+    background: #58595b;
+}
+
+.comm::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: #ed1c24;
+}
+
+/* before and after 는 대부분 position : absolute;를 사용 */
+
+.comm .inner {
+    overflow: hidden;
+}
+
+.comm-left {
+    position: relative;
+    display: block;
+    float: left;
+    width: calc(50% - 100px);
+}
+
+.comm-right {
+    position: relative;
+    display: block;
+    float: right;
+    width: calc(50% - 100px);
+}
+
+.comm h3 {
+    position: relative;
+    display: block;
+    font-size: 32px;
+    color: #fff;
+    font-weight: 300;
+    padding: 50px 0;
+}
+
+.comm ul {
+    position: relative;
+    display: block;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.comm ul li {
+    position: relative;
+    display: block;
+    line-height: 72px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.comm ul li:last-child {
+    border-bottom: none;
+}
+
+.comm ul li a {
+    position: relative;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+
+
+}
+
+.comm ul li a::after {
+    content: '';
+    position: absolute;
+    top: calc(36px - 12px);
+    right: 28px;
+    width: 48px;
+    height: 24px;
+    background: url('../images/bg_common.png') no-repeat;
+    background-position: 0px -49px;
+
+}
+
+.notice-list-txt {
+    position: relative;
+    display: block;
+    width: calc(100% - 118px);
+
+    white-space: nowrap;
+    /* 줄내림을 하지 않도록 하는 설정 */
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    /* 말줄임 기능 */
+
+}
+
+
+/* 고객센터 */
+.cs {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 360px;
+    background: #f8f8f8;
+}
+
+.cs .inner {
+    overflow: hidden;
+    padding-top: 71px;
+}
+
+.cs-left {
+    position: relative;
+    display: block;
+    float: left;
+    width: calc(50% - 1px);
+    background: #fff url('../images/bg_faq.png') no-repeat;
+    background-position: calc(100% - 40px) 50%;
+    padding: 50px 0 50px 55px;
+
+}
+
+.cs-right {
+    position: relative;
+    display: block;
+    float: right;
+    width: calc(50% - 1px);
+    background: #fff url('../images/bg_custom.png') no-repeat calc(100% - 60px) 50%;
+    padding-top: 50px;
+    padding-left: 55px;
+    padding-bottom: 50px;
+}
+
+.cs .inner a {
+    position: relative;
+    display: block;
+}
+
+.cs h3 {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.cs p {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    color: #444;
+    font-weight: 300;
+}
+
+/* About */
+.about {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 810px;
+}
+
+.about .inner {
+    padding-top: 100PX;
+}
+
+.about-top {
+    position: relative;
+    display: block;
+    height: 370PX;
+    background: url(../images/img_about.png) no-repeat right center;
+}
+
+.about-top h2 {
+    position: relative;
+    display: block;
+    font-size: 44px;
+    color: #111;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 25px;
+
+}
+
+.about-top h3 {
+    position: relative;
+    display: block;
+    font-size: 21PX;
+    color: #111;
+    font-weight: 500;
+    padding-left: 100px;
+    padding-bottom: 25px;
+}
+
+.about-top h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 17px;
+    width: 37px;
+    height: 5px;
+    background: #ed1c24;
+}
+
+.about-top p {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    color: #444;
+    font-weight: 300;
+    padding-left: 100px;
+
+}
+
+
+.about-bottom {
+    position: relative;
+    display: block;
+    text-align: center;
+    /* 밑에서 inline-block;을 주어서 글자취급해주었기에 이걸로 가운데 정렬 가능 */
+}
+
+.about-list {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 90px;
+}
+
+.about-list li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100px;
+    height: 160px;
+    background: url('../images/bg_icon.png') no-repeat;
+    background-position: 0px 0px;
+
+}
+
+.about-list li:nth-child(1) {
+    background-position: 0px 0px;
+}
+
+.about-list li:nth-child(2) {
+    margin: 0 200px;
+    background-position: -120px 0px;
+}
+
+.about-list li:nth-child(3) {
+    background-position: -235px 0px;
+}
+
+.about-list li a {
+    position: relative;
+    display: block;
+    padding-top: 125px;
+    font-size: 22px;
+    color: #111;
+    font-weight: 500;
+
+}
+
+/* 하단 */
+.footer {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 168px;
+    background: #4e4e4e;
+}
+
+.footer .inner {
+    overflow: hidden;
+    padding-top: 50px;
+}
+
+.footer-left {
+    position: relative;
+    display: block;
+    float: left;
+    padding-right: 130px;
+}
+
+.footer-right {
+    position: relative;
+    display: block;
+    float: left;
+    font-size: 13px;
+    color: #c3c3c3;
+}
+
+.footer-list {
+    position: relative;
+    display: block;
+}
+
+.footer-list li {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-list li address {
+    position: relative;
+    display: block;
+    font-style: normal;
+
+}
+
+.footer-list li copy {
+    position: relative;
+    display: block;
+
+}
