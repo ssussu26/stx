@@ -1,5 +1,22 @@
 $(document).ready(function () {
 
+    // 모달 기능
+    let modal =$('.modal');
+    let modalCon = $('.modal-content');
+    let modalClose = $('.modal-close');
+    modal.click(function(){
+        modal.stop().fadeOut();
+        $('html').css('overflow', 'auto');
+    });
+    modalCon.click(function(event){
+        // 아래로 클릭한 정보 전달 막기
+        event.stopPropagation();
+    });    
+    modalClose.click(function(){
+        modal.stop().fadeOut();
+        $('html').css('overflow', 'auto');
+    });
+
     // 게시판에 글 목록 출력
     // 공지사항 관련 데이터
     var noticeData = [{
@@ -62,5 +79,5 @@ $(document).ready(function () {
 });
 window.onload = function(){
     // 준비가 되면 실행 코드 작성
-    AOS.init();
+
 }
